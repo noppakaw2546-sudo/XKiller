@@ -1,0 +1,23 @@
+วิธี Build APK จากมือถือด้วย GitHub Actions (ไม่ต้องใช้คอม)
+
+สำคัญ: วิธีนี้ใช้ GitHub Actions ผ่านเว็บเบราว์เซอร์ ต้องมีบัญชี GitHub และอินเทอร์เน็ต
+
+1) แตกไฟล์ ZIP นี้ในมือถือ แล้วเข้าโฟลเดอร์ XKiller
+2) สมัคร/เข้าสู่ระบบ github.com
+3) สร้าง repository ใหม่ ชื่อ XKiller และตั้งเป็น Public เพื่อใช้โควตา Actions ฟรีได้ง่ายขึ้น
+4) อัปโหลดไฟล์และโฟลเดอร์ทั้งหมดที่อยู่ข้างใน XKiller ขึ้นไปที่ root ของ repository (อย่าอัปโหลดโฟลเดอร์ XKiller ซ้อนอีกชั้น)
+   ต้องเห็นไฟล์ build.gradle, settings.gradle, gradle.properties และโฟลเดอร์ app กับ .github ที่หน้า repository
+5) เปิดแท็บ Actions แล้วเลือก workflow ชื่อ Build X KILLER APK
+6) กด Run workflow แล้วรอจนงานสำเร็จ (เครื่องหมายถูกสีเขียว)
+7) เปิดงานที่สำเร็จ เลื่อนลงไปที่ Artifacts แล้วดาวน์โหลด X-Killer-debug-apk
+8) แตก ZIP ที่ดาวน์โหลด แล้วแตะ app-debug.apk เพื่อติดตั้ง อนุญาตติดตั้งจากแหล่งนี้หาก Android ถาม
+
+ถ้าไม่เห็นแท็บ Actions ให้เปิด Settings ของ repository แล้วตรวจว่า Actions เปิดใช้งานอยู่
+ถ้า Build ล้มเหลว ให้เปิดงานแล้วดูส่วน Build debug APK และส่งข้อความ error มา ไม่ต้องส่งรหัสผ่านหรือ token
+
+ข้อจำกัดของแอปในซอร์สนี้:
+- APK เป็น debug build สำหรับทดสอบ ไม่ใช่รุ่น Play Store
+- ไอคอนลอยเป็นทางลัดไปหน้า Accessibility Settings
+- ต้องเปิด Color inversion เองใน Android
+- Contrast/Brightness/White Tone ยังเก็บค่าในแอป ไม่ได้เปลี่ยนภาพเกมอื่น
+- ไม่มีระบบตรวจจับศัตรู
